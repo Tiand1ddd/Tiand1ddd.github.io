@@ -75,57 +75,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-2024-7-6" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/07/06/2024-7-6/" class="article-date">
-  <time class="dt-published" datetime="2024-07-06T08:29:43.355Z" itemprop="datePublished">2024-07-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个整数 n𝑛 和 m𝑚 个不同的质数 p1,p2,…,pm𝑝1,𝑝2,…,𝑝𝑚。</p>
-<p>请你求出 1∼n1∼𝑛 中能被 p1,p2,…,pm𝑝1,𝑝2,…,𝑝𝑚 中的至少一个数整除的整数有多少个。</p>
-<h4 id="输入格式第一行包含整数-n𝑛-和-m𝑚。第二行包含-m𝑚-个质数。"><a href="#输入格式第一行包含整数-n𝑛-和-m𝑚。第二行包含-m𝑚-个质数。" class="headerlink" title="输入格式第一行包含整数 n𝑛 和 m𝑚。第二行包含 m𝑚 个质数。"></a>输入格式第一行包含整数 n𝑛 和 m𝑚。第二行包含 m𝑚 个质数。</h4><h4 id="输出格式输出一个整数，表示满足条件的整数的个数。"><a href="#输出格式输出一个整数，表示满足条件的整数的个数。" class="headerlink" title="输出格式输出一个整数，表示满足条件的整数的个数。"></a>输出格式输出一个整数，表示满足条件的整数的个数。</h4><h4 id="数据范"><a href="#数据范" class="headerlink" title="数据范"></a>数据范</h4><h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><hr>
-<p>知识提炼–容斥原理</p>
-<p>样例解释:  定义集合S1，S2分别为能被2和3整数的数，所以有</p>
-<p>​				 S1 &#x3D; {2，4，6，8，10}  |S1| &#x3D; n&#x2F;p1 &#x3D; 10&#x2F;2 &#x3D; 5     S2 &#x3D; {3,6,9} |S2| &#x3D; 10&#x2F;3(下取整数) &#x3D; 3</p>
-<p>​				|S2∩S1| &#x3D; 10&#x2F;2*3 &#x3D; 1(下取整)</p>
-<p>​				根据容斥原理可以得到又能被2整除又能被3整数  |S1∪S2| &#x3D; |S1|+|S2| - |S1∩S2| &#x3D; 7</p>
-<p>解题思路：设每个质数对应一个集合Si，该集合表示1~n中能被pi整数的数</p>
-<p>​				 题目所求解为 |S1+S2+S3+…Sm| &#x3D; |S1|+|S2|+|S3|+….|Sm|-|S1∩S2|-|S1∩S3|-…..</p>
-<p>题目难点:<strong>如何用代码实现对集合的分配，并且不重不漏</strong></p>
-<p>​				首先，对于给定的m个质数，可以通过遍历1~1&lt;&lt;m个数，对每个数的二进制位进行遍历得到质数集合编号，从而得到不重不漏的组合。根据容斥原理，可以得到集合个数是偶数进行减法操作，集合个数为奇数进行加法操作，核心代码以及完整代码如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i&lt;<span class="number">1</span>&lt;&lt;m;++i)&#123;<span class="comment">//遍历从1~1&lt;&lt;m个数</span></span><br><span class="line">    <span class="type">int</span> t = <span class="number">1</span>,s = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>;j&lt;m;++j)&#123;<span class="comment">//对每个数的二进制位进行遍历</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>C++：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">20</span>;</span><br><span class="line"><span class="type">int</span> n,m,p[N];</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i&lt;m;++i) cin&gt;&gt;p[i];</span><br><span class="line">  </span><br><span class="line">  ll res = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i&lt;<span class="number">1</span>&lt;&lt;m;++i)&#123;</span><br><span class="line">    <span class="type">int</span> s = <span class="number">0</span>,t = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>;j&lt;m;++j)</span><br><span class="line">      <span class="keyword">if</span>(i&gt;&gt;j &amp; <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>((ll)t*p[j] &gt; n)&#123;</span><br><span class="line">          t = <span class="number">-1</span>;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        t *= p[j];</span><br><span class="line">        s++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(t != <span class="number">-1</span>)&#123;</span><br><span class="line">      <span class="keyword">if</span>(s%<span class="number">2</span>) res += n/t;</span><br><span class="line">      <span class="keyword">else</span> res -= n/t;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  cout&lt;&lt;res&lt;&lt;endl;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://tiand1ddd.github.io/2024/07/06/2024-7-6/" data-id="cly9vbqk30000gkv5h82y5gbs" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/07/06/hello-world/" class="article-date">
@@ -165,7 +114,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://tiand1ddd.github.io/2024/07/06/hello-world/" data-id="cly9tl7670000b0v5cy838499" data-title="Hello World" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://tiand1ddd.github.io/2024/07/06/hello-world/" data-id="clycpf5ls00002cv5b3jp8ueb" data-title="Hello World" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -206,10 +155,6 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2024/07/06/2024-7-6/">(no title)</a>
-          </li>
         
           <li>
             <a href="/2024/07/06/hello-world/">Hello World</a>
