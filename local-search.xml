@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>tire树</title>
+    <link href="/2024/07/11/Tire%E6%A0%91/"/>
+    <url>/2024/07/11/Tire%E6%A0%91/</url>
+    
+    <content type="html"><![CDATA[<p>tire树又叫字典树，是一种高效存储，查找一系列字符串的数据结构，我们在书写代码的过程中用到自动补全功能可以用tire树实现。      </p><p>为了掌握好tire树，我们需要解决以下几个问题:</p><ol><li>如何表示tire树？<br>通过定义一个二维数组来表示tire树，<code>tr[N][26]</code>。第一维表示有N个节点，因为每个字母后有26种可能，所以第二维为26，<code>tr[N][x-&#39;a&#39;]</code>的值表示下一个节点在第一维中的值，如果该值不为0，则表示字母x存在，并且通过tr数组的值检索或存储下一个节点的值，对于任意一个字符串的第一个字母x，都从树的根节点<code>tr[0][x-&#39;a&#39;]</code>开始向下存储。接下来我们举个简单的例子:</li></ol>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>容斥原理</title>
+    <link href="/2024/07/06/2024-7-6/"/>
+    <url>/2024/07/06/2024-7-6/</url>
+    
+    <content type="html"><![CDATA[<h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个整数 n𝑛 和 m𝑚 个不同的质数 p1,p2,…,pm𝑝1,𝑝2,…,𝑝𝑚。</p><p>请你求出 1∼n1∼𝑛 中能被 p1,p2,…,pm𝑝1,𝑝2,…,𝑝𝑚 中的至少一个数整除的整数有多少个。</p><h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>给定一个整数 n𝑛 和 m𝑚 个不同的质数 p1,p2,…,pm𝑝1,𝑝2,…,𝑝𝑚。第二行包含 m𝑚 个质数。</p><h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>给定一个整数 n𝑛 和 m𝑚 个不同的质数 p1,p2,…,pm𝑝1,𝑝2,…,𝑝𝑚。</p><h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤m≤16  1≤n,pi≤1091</p><h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">10 </span><span class="hljs-number">2</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure><h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">7<br></code></pre></td></tr></table></figure><hr><p>知识提炼–容斥原理</p><p>样例解释:  定义集合S1，S2分别为能被2和3整数的数，所以有</p><p>​ S1 &#x3D; {2，4，6，8，10}  |S1| &#x3D; n&#x2F;p1 &#x3D; 10&#x2F;2 &#x3D; 5     S2 &#x3D; {3,6,9} |S2| &#x3D; 10&#x2F;3(下取整数) &#x3D; 3</p><p>​|S2∩S1| &#x3D; 10&#x2F;2*3 &#x3D; 1(下取整)</p><p>​根据容斥原理可以得到又能被2整除又能被3整数  |S1∪S2| &#x3D; |S1|+|S2| - |S1∩S2| &#x3D; 7</p><p>解题思路：设每个质数对应一个集合Si，该集合表示1~n中能被pi整数的数</p><p>​ 题目所求解为 |S1+S2+S3+…Sm| &#x3D; |S1|+|S2|+|S3|+….|Sm|-|S1∩S2|-|S1∩S3|-…..</p><p>题目难点:<strong>如何用代码实现对集合的分配，并且不重不漏</strong></p><p>​首先，对于给定的m个质数，可以通过遍历1~1&lt;&lt;m个数，对每个数的二进制位进行遍历得到质数集合编号，从而得到不重不漏的组合。根据容斥原理，可以得到集合个数是偶数进行减法操作，集合个数为奇数进行加法操作，核心代码以及完整代码如下：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;i&lt;<span class="hljs-number">1</span>&lt;&lt;m;++i)&#123;<span class="hljs-comment">//遍历从1~1&lt;&lt;m个数</span><br>    <span class="hljs-type">int</span> t = <span class="hljs-number">1</span>,s = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;j&lt;m;++j)&#123;<span class="hljs-comment">//对每个数的二进制位进行遍历</span><br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>C++：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">20</span>;<br><span class="hljs-type">int</span> n,m,p[N];<br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>  cin&gt;&gt;n&gt;&gt;m;<br>  <br>  <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i&lt;m;++i) cin&gt;&gt;p[i];<br>  <br>  ll res = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;i&lt;<span class="hljs-number">1</span>&lt;&lt;m;++i)&#123;<br>    <span class="hljs-type">int</span> s = <span class="hljs-number">0</span>,t = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;j&lt;m;++j)<br>      <span class="hljs-keyword">if</span>(i&gt;&gt;j &amp; <span class="hljs-number">1</span>)&#123;<br>        <span class="hljs-keyword">if</span>((ll)t*p[j] &gt; n)&#123;<br>          t = <span class="hljs-number">-1</span>;<br>          <span class="hljs-keyword">break</span>;<br>        &#125;<br>        t *= p[j];<br>        s++;<br>      &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">if</span>(t != <span class="hljs-number">-1</span>)&#123;<br>      <span class="hljs-keyword">if</span>(s%<span class="hljs-number">2</span>) res += n/t;<br>      <span class="hljs-keyword">else</span> res -= n/t;<br>    &#125;<br>  &#125;<br>  <br>  cout&lt;&lt;res&lt;&lt;endl;<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>容斥原理</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>容斥</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
