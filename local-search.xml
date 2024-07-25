@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>数字三角形</title>
+    <link href="/2024/07/25/%E6%95%B0%E5%AD%97%E4%B8%89%E8%A7%92%E5%BD%A2/"/>
+    <url>/2024/07/25/%E6%95%B0%E5%AD%97%E4%B8%89%E8%A7%92%E5%BD%A2/</url>
+    
+    <content type="html"><![CDATA[<p>给定一个如下图所示的数字三角形，从顶部出发，在每一结点可以选择移动至其左下方的结点或移动至其右下方的结点，一直走到底层，要求找出一条路径，使路径上的数字的和最大。</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs apache">        <span class="hljs-attribute">7</span><br>      <span class="hljs-attribute">3</span>   <span class="hljs-number">8</span><br>    <span class="hljs-attribute">8</span>   <span class="hljs-number">1</span>   <span class="hljs-number">0</span><br>  <span class="hljs-attribute">2</span>   <span class="hljs-number">7</span>   <span class="hljs-number">4</span>   <span class="hljs-number">4</span><br><span class="hljs-attribute">4</span>   <span class="hljs-number">5</span>   <span class="hljs-number">2</span>   <span class="hljs-number">6</span>   <span class="hljs-number">5</span><br></code></pre></td></tr></table></figure><h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 n𝑛，表示数字三角形的层数。</p><p>接下来 n𝑛 行，每行包含若干整数，其中第 i𝑖 行表示数字三角形第 i𝑖 层包含的整数。</p><h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示最大的路径数字和。</p><h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤n≤5001</p><p>10000≤三角形中的整数≤10000</p><h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-number">5</span><br><span class="hljs-number">7</span><br><span class="hljs-symbol">3 </span><span class="hljs-number">8</span><br><span class="hljs-symbol">8 </span><span class="hljs-number">1</span> <span class="hljs-number">0</span> <br><span class="hljs-symbol">2 </span><span class="hljs-number">7</span> <span class="hljs-number">4</span> <span class="hljs-number">4</span><br><span class="hljs-symbol">4 </span><span class="hljs-number">5</span> <span class="hljs-number">2</span> <span class="hljs-number">6</span> <span class="hljs-number">5</span><br></code></pre></td></tr></table></figure><h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">30<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>动态规划</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>dp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>tire树</title>
     <link href="/2024/07/11/Tire%E6%A0%91/"/>
     <url>/2024/07/11/Tire%E6%A0%91/</url>
