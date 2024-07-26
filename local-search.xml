@@ -5,22 +5,28 @@
   
   <entry>
     <title>大盗阿福</title>
-    <link href="/2024/07/27/%E5%A4%A7%E7%9B%97%E9%98%BF%E7%A6%8F/"/>
-    <url>/2024/07/27/%E5%A4%A7%E7%9B%97%E9%98%BF%E7%A6%8F/</url>
+    <link href="/2027/07/25/%E5%A4%A7%E7%9B%97%E9%98%BF%E7%A6%8F/"/>
+    <url>/2027/07/25/%E5%A4%A7%E7%9B%97%E9%98%BF%E7%A6%8F/</url>
     
     <content type="html"><![CDATA[]]></content>
     
     
     <categories>
       
-      <category>-动态规划 -状态机模型</category>
+      <category>动态规划</category>
+      
+      <category>状态机模型</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>-dp -线性dp -状态机</tag>
+      <tag>dp</tag>
+      
+      <tag>线性dp</tag>
+      
+      <tag>状态机模型</tag>
       
     </tags>
     
