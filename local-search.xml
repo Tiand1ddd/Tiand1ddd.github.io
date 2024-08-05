@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>子序列问题</title>
+    <link href="/2024/08/05/%E5%AD%90%E5%BA%8F%E5%88%97%E9%97%AE%E9%A2%98/"/>
+    <url>/2024/08/05/%E5%AD%90%E5%BA%8F%E5%88%97%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>最长公共子序列：dp O(n2)</p><p>最长上升子序列：dp O(n2)   优化: 贪心加二分 O（nlogn)</p><p>最长公共上升子序列:  dp O(n2)   上海交大机试题–最长上升子序列 1e6 O(nlogn)</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>汇总</category>
+      
+      <category>子序列</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>子序列汇总</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>大盗阿福</title>
     <link href="/2024/07/27/%E5%A4%A7%E7%9B%97%E9%98%BF%E7%A6%8F/"/>
     <url>/2024/07/27/%E5%A4%A7%E7%9B%97%E9%98%BF%E7%A6%8F/</url>
